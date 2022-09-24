@@ -1,0 +1,28 @@
+CREATE TABLE "employee"(
+    "id" serial NOT NULL,
+    "name" VARCHAR(255) NOT NULL,
+    "email" VARCHAR(255) NOT NULL,
+    "biography" VARCHAR(255) NULL,
+    "profession_id" INTEGER NOT NULL,
+    "department_id" INTEGER NOT NULL
+);
+ALTER TABLE
+    "employee" ADD PRIMARY KEY("id");
+CREATE TABLE "profession"(
+    "id" serial NOT NULL,
+    "name" VARCHAR(255) NOT NULL,
+    "requirements" VARCHAR(255) NOT NULL
+);
+ALTER TABLE
+    "profession" ADD PRIMARY KEY("id");
+CREATE TABLE "department"(
+    "id" serial NOT NULL,
+    "name" VARCHAR(255) NOT NULL,
+    "description" INTEGER NOT NULL
+);
+ALTER TABLE
+    "department" ADD PRIMARY KEY("id");
+ALTER TABLE
+    "employee" ADD CONSTRAINT "employee_profession_id_foreign" FOREIGN KEY("profession_id") REFERENCES "profession"("id");
+ALTER TABLE
+    "employee" ADD CONSTRAINT "employee_department_id_foreign" FOREIGN KEY("department_id") REFERENCES "department"("id");
